@@ -1,14 +1,9 @@
 {
-    "users": [
-        {
-            "name": "Cleyton Pereira",
-            "email": "cleyton@email.com.br",
-            "id": 1
-        },
-        {
-            "name": "Antonia Ferreira",
-            "email": "antonia@email.com.br",
-            "id": 2
-        }
-    ]
+  "users": [
+    {
+      "name": "Antonia Ferreira",
+      "email": "antonia@email.com.br",
+      "id": 2
+    }
+  ]
 }
