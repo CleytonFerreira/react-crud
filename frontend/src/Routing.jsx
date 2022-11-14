@@ -1,6 +1,6 @@
 import UserList from './components/UserList'
 import AddUser from './components/AddUser'
-import UpdateUser from './components/UserList'
+import UpdateUser from './components/UpdateUser'
 
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 

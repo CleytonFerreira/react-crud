@@ -1,15 +1,17 @@
-import {useState, useEffect} from 'react'
-import axios from 'axios'
-import {Link} from 'react-router-dom'
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
 
-function UserList() {
-    const [APIData, setAPIData] = useState()
+const UserList = () => {
+    const [APIData, setAPIData] = useState([])
     useEffect(() => {
-        axios.get(`http://localhost:3001/users`)
-            .then((response) => {
-                setAPIData(response.data)
-            })
+        getUsers()
     }, [])
+
+    const getUsers = async () => {
+        await axios.get('http://localhost:3001/users')
+            .then((res) => setAPIData(res.data))
+    }
 
     const setData = (data) => {
         let { id, name, email } = data;
@@ -22,19 +24,11 @@ function UserList() {
         await axios.delete(`http://localhost:3001/users/${id}`)
             .then(() => alert('Usuário removido com sucesso.'))
             .then(() => {
-                getData();
+                getUsers();
             })
     }
 
-    const getData = () => {
-        axios.get(`http://localhost:3001/users`)
-            .then((getData) => {
-                setAPIData(getData.data);
-            })
-    }
-
-
-    return(
+    return (
         <>
             {APIData && APIData.map((user) => {
                 return (
@@ -42,7 +36,7 @@ function UserList() {
                         <p>{user.id}</p>
                         <p>{user.name}</p>
                         <p>{user.email}</p>
-                        <Link to="/edituser">
+                        <Link to="/update">
                             <button onClick={() => setData(user)}>Editar</button>
                         </Link>
                         <button onClick={() => handleDelete(user.id)}>Excluir</button>
@@ -50,6 +44,7 @@ function UserList() {
                 )
             })}
         </>
+
     )
 }
 
