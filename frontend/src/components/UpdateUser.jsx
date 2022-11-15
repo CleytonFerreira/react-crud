@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 
-
-export default function Update() {
+function UpdateUser() {
     let navigate = useNavigate();
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -13,13 +12,13 @@ export default function Update() {
         e.preventDefault();
         let response = await axios.put(`http://localhost:3001/users/${id}`, {
             name,
-            email,
-        }).then(
-            navigate("/home")
-        )
-    
+            email
+        })
+
         if (response) {
             alert("As alterações foram salvas.")
+            navigate("/home")
+            console.log(response)
         }
         else {
             alert("Houve um erro na atualização dos dados.")
@@ -36,17 +35,21 @@ export default function Update() {
         <form className="edit-user-form">
             <label>Nome</label>
             <input
-                placeholder='Digite seu nome'
+                type="text"
+                placeholder="Digite seu nome"
                 value={name}
-                onChange={(e) => setName(e.target.value)}
+                onChange={e => setName(e.target.value)}
             />
             <label>E-mail</label>
             <input
-                placeholder='Digite seu e-mail'
+                type="email"
+                placeholder="Digite seu e-mail"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={e => setEmail(e.target.value)}
             />
-            <button type='submit' onClick={updateAPIData}>Salvar alterações</button>
+            <button type="submit" onClick={updateAPIData}>Salvar alterações</button>
         </form>
     )
 }
+
+export default UpdateUser
