@@ -9,16 +9,15 @@ function UpdateUser() {
     const [id, setID] = useState(null);
 
     const updateAPIData = async (e) => {
-        e.preventDefault();
+        e.preventDefault()
         let response = await axios.put(`http://localhost:3001/users/${id}`, {
             name,
-            email
+            email,
         })
-
+        
         if (response) {
             alert("As alterações foram salvas.")
             navigate("/home")
-            console.log(response)
         }
         else {
             alert("Houve um erro na atualização dos dados.")
@@ -28,26 +27,23 @@ function UpdateUser() {
     useEffect(() => {
         setID(localStorage.getItem('ID'))
         setName(localStorage.getItem('Name'));
-        setEmail(localStorage.getItem('Email'));
+        setEmail(localStorage.getItem('E-mail'));
     }, []);
 
     return (
-        <form className="edit-user-form">
+        <form className="create-form">
             <label>Nome</label>
             <input
-                type="text"
-                placeholder="Digite seu nome"
+                placeholder='Digite seu nome'
                 value={name}
-                onChange={e => setName(e.target.value)}
+                onChange={(e) => setName(e.target.value)}
             />
-            <label>E-mail</label>
-            <input
-                type="email"
-                placeholder="Digite seu e-mail"
+            <label>Email</label>
+            <input placeholder='Digite seu e-mail'
                 value={email}
-                onChange={e => setEmail(e.target.value)}
+                onChange={(e) => setEmail(e.target.value)}
             />
-            <button type="submit" onClick={updateAPIData}>Salvar alterações</button>
+            <button type='submit' onClick={updateAPIData}>Salvar alterações</button>
         </form>
     )
 }

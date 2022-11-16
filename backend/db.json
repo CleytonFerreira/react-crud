@@ -2,23 +2,18 @@
   "users": [
     {
       "name": "Antonia Ferreira",
-      "email": "an6@email.com",
+      "email": "antoniamaria@email.com",
       "id": 2
     },
     {
-      "id": 4,
       "name": "Flavia",
-      "email": "fb2@email.com"
+      "email": "fb5@email.com",
+      "id": 4
     },
     {
       "name": "Cleyton",
-      "email": "jc@email.com",
+      "email": "cleyton@email.com",
       "id": 5
-    },
-    {
-      "name": "Guilherme",
-      "email": "gui@email.com",
-      "id": 6
     }
   ]
 }

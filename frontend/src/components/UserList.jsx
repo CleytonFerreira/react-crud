@@ -2,15 +2,20 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
-const UserList = () => {
-    const [APIData, setAPIData] = useState([])
+function UserList() {
+    const [APIData, setAPIData] = useState([]);
     useEffect(() => {
-        getUsers()
+        axios.get(`http://localhost:3001/users`)
+            .then((response) => {
+                setAPIData(response.data);
+            })
     }, [])
 
-    const getUsers = async () => {
-        await axios.get('http://localhost:3001/users')
-            .then((res) => setAPIData(res.data))
+    const getData = async () => {
+        await axios.get(`http://localhost:3001/users`)
+            .then((getData) => {
+                setAPIData(getData.data);
+            })
     }
 
     const setData = (data) => {
@@ -21,11 +26,13 @@ const UserList = () => {
     }
 
     const handleDelete = async (id) => {
-        await axios.delete(`http://localhost:3001/users/${id}`)
-            .then(() => alert('Usuário removido com sucesso.'))
-            .then(() => {
-                getUsers();
-            })
+        if (window.confirm('Deseja realmente excluir este usuário?')) {
+            await axios.delete(`http://localhost:3001/users/${id}`)
+                .then(() => alert('Usuário removido com sucesso.'))
+                .then(() => {
+                    getData();
+                })
+        }
     }
 
     return (
@@ -42,9 +49,9 @@ const UserList = () => {
                         <button onClick={() => handleDelete(user.id)}>Excluir</button>
                     </div>
                 )
-            })}
+            })
+            }
         </>
-
     )
 }
 
