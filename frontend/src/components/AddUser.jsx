@@ -26,19 +26,19 @@ function AddUser() {
         <form>
             <input
                 type="text"
-                placeholder="Digite seu primeiro nome"
+                placeholder="Digite seu nome"
                 onChange={e => setName(e.target.value)}
             >
             </input>
 
             <input
                 type="email"
-                placeholder="Digite seu email"
+                placeholder="Digite seu e-mail"
                 onChange={e => setEmail(e.target.value)}
             >
             </input>
 
-            <button type="submit" onClick={postData}>Adicionar usuário</button>
+            <button type="submit" onClick={postData}>Cadastrar usuário</button>
         </form>
     )
 }
