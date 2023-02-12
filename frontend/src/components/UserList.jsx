@@ -13,9 +13,7 @@ function UserList() {
 
     const getData = async () => {
         await axios.get(`http://localhost:3001/users`)
-            .then((getData) => {
-                setAPIData(getData.data);
-            })
+            .then((getData) => { setAPIData(getData.data); })
     }
 
     const setData = (data) => {
@@ -29,9 +27,7 @@ function UserList() {
         if (window.confirm('Deseja realmente excluir este usuário?')) {
             await axios.delete(`http://localhost:3001/users/${id}`)
                 .then(() => alert('Usuário removido com sucesso.'))
-                .then(() => {
-                    getData();
-                })
+                .then(() => { getData(); })
         }
     }
 
@@ -49,8 +45,7 @@ function UserList() {
                         <button onClick={() => handleDelete(user.id)}>Excluir</button>
                     </div>
                 )
-            })
-            }
+            })}
         </>
     )
 }
