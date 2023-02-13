@@ -1,12 +1,14 @@
 import UserList from './components/UserList'
 import AddUser from './components/AddUser'
 import UpdateUser from './components/UpdateUser'
+import Menu from './components/Menu'
 
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 
 function Routing() {
     return (
         <BrowserRouter>
+            <Menu />
             <Routes>
                 <Route exact path="/" element={<Navigate to="/home" />} />
                 <Route exact path='/home' element={<UserList />} />
