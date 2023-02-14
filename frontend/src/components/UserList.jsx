@@ -33,19 +33,37 @@ function UserList() {
 
     return (
         <>
-            {APIData && APIData.map((user) => {
-                return (
-                    <div key={user.id}>
-                        <p>{user.id}</p>
-                        <p>{user.name}</p>
-                        <p>{user.email}</p>
-                        <Link to="/update">
-                            <button onClick={() => setData(user)}>Editar</button>
-                        </Link>
-                        <button onClick={() => handleDelete(user.id)}>Excluir</button>
-                    </div>
-                )
-            })}
+            <div className="container">
+                <div className="user-list">
+                    <h1>Usuários</h1>
+
+                    {APIData && APIData.map((user) => {
+                        return (
+                            <div className="user" key={user.id}>
+                                <div className="user-id">
+                                    <p>{user.id}</p>
+                                </div>
+
+                                <div className="user-data">
+                                    <p>{user.name}</p>
+                                    <p>{user.email}</p>
+                                </div>
+
+                                <div className="user-controls">
+                                    <Link to="/update">
+                                        <button onClick={() => setData(user)}>Editar</button>
+                                    </Link>
+                                    <button onClick={() => handleDelete(user.id)}>Excluir</button>
+                                </div>
+
+                                <div className="bottom-line">
+                                    <hr />
+                                </div>
+                            </div>
+                        )
+                    })}
+                </div>
+            </div>
         </>
     )
 }

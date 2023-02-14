@@ -13,11 +13,22 @@ body {
   background-color: #151314;
 }
 
+.container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+h1 {
+  padding: 80px 0 40px;
+}
+
+
 /*menu*/
 .menu {
-  font-size: 24px;
+  font-size: 16px;
   display: flex;
-  justify-content: center; 
+  justify-content: center;
   width: 100%;
 }
 
@@ -39,3 +50,54 @@ body {
   text-decoration: none;
   cursor: pointer;
 }
+
+
+/*UserList*/
+.user-list {
+  width: 70%;
+}
+
+.user {
+  display: grid;
+  grid-template-columns: 10% 90%;
+  grid-template-rows: repeat(4, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  padding:  5px 0;
+}
+
+.user-id {
+  grid-area: 1 / 1 / 3 / 2;
+  align-self: center;
+}
+
+.user-data {
+  grid-area: 1 / 2 / 3 / 3;
+  padding:  20px 0;
+}
+
+.user-controls {
+  grid-area: 3 / 1 / 4 / 3;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.user-controls button {
+  width: 75px;
+  padding: 5px;
+  background-color: transparent;
+  color: #b1b2b5;
+  border-color: #b1b2b5;
+  border-radius: 6px;
+}
+
+.bottom-line {
+  margin-top: 10px;
+  grid-area: 4 / 1 / 5 / 3;
+}
+
+/*AddUser*/
+
+
+/*UpdateUser*/
