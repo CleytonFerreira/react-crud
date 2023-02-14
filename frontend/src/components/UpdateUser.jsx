@@ -14,7 +14,7 @@ function UpdateUser() {
             name,
             email,
         })
-        
+
         if (response) {
             alert("As alterações foram salvas.")
             navigate("/home")
@@ -30,21 +30,36 @@ function UpdateUser() {
         setEmail(localStorage.getItem('E-mail'));
     }, []);
 
+    const handleCancel = () => {
+        if (window.confirm('Deseja cancelar? Você perderá as alterações não salvas.')) {
+            navigate("/home")
+        }
+    }
+
     return (
-        <form className="create-form">
-            <label>Nome</label>
-            <input
-                placeholder='Digite seu nome'
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-            />
-            <label>Email</label>
-            <input placeholder='Digite seu e-mail'
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-            />
-            <button type='submit' onClick={updateAPIData}>Salvar alterações</button>
-        </form>
+        <div className="container">
+            <div className="update-user">
+                <h1>Editar usuário</h1>
+                <form className="user-form">
+                    <label>Nome</label>
+                    <input
+                        placeholder='Digite seu nome'
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                    />
+                    <label>Email</label>
+                    <input placeholder='Digite seu e-mail'
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                    />
+
+                    <div className="user-controls">
+                        <button onClick={handleCancel}>Cancelar</button>
+                        <button type='submit' onClick={updateAPIData}>Salvar alterações</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     )
 }
 

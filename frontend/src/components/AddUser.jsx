@@ -22,24 +22,39 @@ function AddUser() {
         }
     }
 
+    const handleCancel = () => {
+        if (window.confirm('Deseja cancelar? Você perderá as alterações não salvas.')) {
+            navigate("/home")
+        }
+    }
+
     return (
-        <form>
-            <input
-                type="text"
-                placeholder="Digite seu nome"
-                onChange={e => setName(e.target.value)}
-            >
-            </input>
+        <div className="container">
+            <div className="new-user">
+                <h1>Novo usuário</h1>
+                <form className="user-form">
+                    <label>Nome</label>
+                    <input
+                        type="text"
+                        placeholder="Digite seu nome"
+                        onChange={e => setName(e.target.value)}
+                    >
+                    </input>
 
-            <input
-                type="email"
-                placeholder="Digite seu e-mail"
-                onChange={e => setEmail(e.target.value)}
-            >
-            </input>
-
-            <button type="submit" onClick={postData}>Cadastrar usuário</button>
-        </form>
+                    <label>E-mail</label>
+                    <input
+                        type="email"
+                        placeholder="Digite seu e-mail"
+                        onChange={e => setEmail(e.target.value)}
+                    >
+                    </input>
+                    <div className="user-controls">
+                        <button onClick={handleCancel}>Cancelar</button>
+                        <button type="submit" onClick={postData}>Cadastrar usuário</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     )
 }
 
