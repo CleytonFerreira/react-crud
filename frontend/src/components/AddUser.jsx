@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { object, string, InferType } from 'yup';
+import { object, string } from 'yup';
 
 let userSchema = object({
     name: string().required('O campo nome não pode ficar vazio.')
@@ -55,7 +55,7 @@ function AddUser() {
         <div className="container">
             <div className="new-user">
                 <h1>Novo usuário</h1>
-                {status.type === 'error' ? <p style={{ color: 'yellow' }}>{status.message}</p> : ''}
+                {status.type === 'error' ? <p className="error-msg">{status.message}</p> : ''}
                 <br />
                 <form className="user-form">
                     <label>Nome</label>
