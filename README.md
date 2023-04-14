@@ -7,6 +7,8 @@ O projeto é um monorepo onde é usada uma mock api com o módulo [JSON Server](
 
  - Requisições HTTP realizadas com [Axios](https://axios-http.com/)
 
+ - Validação de campos de formulário com [Yup](https://github.com/jquense/yup)
+	
 ## Iniciando a aplicação
 1. Após clonar o repositório, com o uso de um terminal navegue até a pasta **backend**.
 2. Inicie o json-server com `npm start`. O backend executa na porta `3001`.
